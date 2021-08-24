@@ -1,9 +1,10 @@
-import express from "express";
+import * as express from 'express';
 import { graphqlHTTP } from "express-graphql"; //initialize the graphql server
-import cors from "cors"; //rect to graphql
+import * as cors from "cors"; //rect to graphql
 import { createConnection } from "typeorm"; //fun in typeorm to make connection database to application
 
 import {schema} from "./Schema"
+import { Users } from './Schema/Entities/Users';
 
 const main = async () => {
 
@@ -13,8 +14,8 @@ const main = async () => {
     username:"root",
     password:"",
     logging:true,
-    synchronize:false,
-    entities:[]
+    synchronize:false, //true for creating table
+    entities:[Users]
   })
 
   const app = express();
